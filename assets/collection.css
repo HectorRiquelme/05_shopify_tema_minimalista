@@ -1,0 +1,175 @@
+/* ============================================
+   Tema Minimalista - Estilos de Coleccion
+   Autor: Hector Riquelme
+   ============================================ */
+
+.collection-page {
+  padding: 3rem 0;
+}
+
+.collection-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.collection-header__title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.collection-header__description {
+  color: var(--color-text-light);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.collection-header__count {
+  font-size: 0.8rem;
+  color: var(--color-text-light);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 1rem;
+}
+
+/* --- Filtros y ordenacion --- */
+.collection-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.collection-toolbar__sort select {
+  padding: 0.5rem 1rem;
+  border: 1px solid #ddd;
+  font-family: inherit;
+  font-size: 0.85rem;
+  background-color: transparent;
+}
+
+/* --- Grilla de productos --- */
+.collection-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.collection-grid--2 { grid-template-columns: repeat(2, 1fr); }
+.collection-grid--3 { grid-template-columns: repeat(3, 1fr); }
+.collection-grid--4 { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 768px) {
+  .collection-grid--2,
+  .collection-grid--3,
+  .collection-grid--4 {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .collection-grid--2,
+  .collection-grid--3,
+  .collection-grid--4 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* --- Tarjeta de producto --- */
+.product-card {
+  position: relative;
+}
+
+.product-card__image {
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  background-color: var(--color-secondary);
+}
+
+.product-card__image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.product-card:hover .product-card__image img {
+  transform: scale(1.05);
+}
+
+.product-card__vendor {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+  margin-bottom: 0.3rem;
+}
+
+.product-card__title {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 400;
+  margin-bottom: 0.3rem;
+}
+
+.product-card__title a:hover {
+  color: var(--color-accent);
+}
+
+.product-card__price {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.product-card__price--compare {
+  text-decoration: line-through;
+  color: var(--color-text-light);
+  font-size: 0.8rem;
+  margin-left: 0.3rem;
+  font-weight: 400;
+}
+
+.product-card__badge {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.8rem;
+  background-color: var(--color-accent);
+  color: #fff;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.7rem;
+}
+
+/* --- Paginacion --- */
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 3rem;
+}
+
+.pagination a,
+.pagination span {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 0.85rem;
+  border: 1px solid #ddd;
+  transition: all 0.3s;
+}
+
+.pagination a:hover {
+  border-color: var(--color-primary);
+}
+
+.pagination .is-current {
+  background-color: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}

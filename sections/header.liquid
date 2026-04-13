@@ -1,0 +1,61 @@
+<header class="site-header" data-section-id="{{ section.id }}">
+  <div class="container">
+    <div class="site-header__inner">
+      <a href="/" class="site-header__logo">
+        {%- if settings.logo -%}
+          <img
+            src="{{ settings.logo | image_url: width: 300 }}"
+            alt="{{ shop.name }}"
+            loading="eager"
+            width="{{ settings.logo_max_width }}"
+          >
+        {%- else -%}
+          <span class="site-header__logo-text">{{ settings.brand_name | default: shop.name }}</span>
+        {%- endif -%}
+      </a>
+
+      <nav class="site-header__nav" aria-label="Navegacion principal">
+        <ul>
+          {%- for link in section.settings.menu.links -%}
+            <li>
+              <a href="{{ link.url }}">{{ link.title }}</a>
+            </li>
+          {%- endfor -%}
+        </ul>
+      </nav>
+
+      <div class="site-header__actions">
+        <a href="/search" aria-label="Buscar">
+          {% render 'icon-set', icon: 'search' %}
+        </a>
+        <a href="/account" aria-label="Mi cuenta">
+          {% render 'icon-set', icon: 'account' %}
+        </a>
+        <a href="/cart" aria-label="Carrito">
+          {% render 'icon-set', icon: 'cart' %}
+          {%- if cart.item_count > 0 -%}
+            <span class="site-header__cart-count">{{ cart.item_count }}</span>
+          {%- endif -%}
+        </a>
+        <button class="mobile-menu-toggle" aria-label="Menu" aria-expanded="false">
+          {% render 'icon-set', icon: 'menu' %}
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Encabezado",
+  "class": "section-header",
+  "settings": [
+    {
+      "type": "link_list",
+      "id": "menu",
+      "label": "Menu principal",
+      "default": "main-menu"
+    }
+  ]
+}
+{% endschema %}

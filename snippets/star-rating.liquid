@@ -1,0 +1,17 @@
+{%- comment -%}
+  Renderiza estrellas de valoracion.
+  Parametros:
+    - rating (numero 1-5, requerido)
+{%- endcomment -%}
+
+{%- assign rating_int = rating | default: 0 | times: 1 -%}
+
+<div class="star-rating" aria-label="{{ rating_int }} de 5 estrellas">
+  {%- for i in (1..5) -%}
+    {%- if i <= rating_int -%}
+      <span class="star-rating__star" aria-hidden="true">&#9733;</span>
+    {%- else -%}
+      <span class="star-rating__star star-rating__star--empty" aria-hidden="true">&#9733;</span>
+    {%- endif -%}
+  {%- endfor -%}
+</div>

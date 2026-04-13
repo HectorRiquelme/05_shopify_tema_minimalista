@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "collection-grid": {
+      "type": "collection-grid",
+      "settings": {
+        "columns": "3",
+        "products_per_page": 12,
+        "show_vendor": false
+      }
+    }
+  },
+  "order": ["collection-grid"]
+}

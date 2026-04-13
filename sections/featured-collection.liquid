@@ -1,0 +1,109 @@
+<section class="featured-collection section-padding" data-section-id="{{ section.id }}">
+  <div class="container">
+    <div class="section-header">
+      {%- if section.settings.subtitle != blank -%}
+        <p class="section-header__subtitle">{{ section.settings.subtitle }}</p>
+      {%- endif -%}
+      <h2>{{ section.settings.heading }}</h2>
+    </div>
+
+    {%- assign collection = collections[section.settings.collection] -%}
+
+    {%- if collection != blank -%}
+      <div class="collection-grid collection-grid--{{ section.settings.columns }}">
+        {%- for product in collection.products limit: section.settings.products_to_show -%}
+          {% render 'product-card', product: product, show_vendor: section.settings.show_vendor %}
+        {%- endfor -%}
+      </div>
+
+      {%- if section.settings.show_view_all -%}
+        <div class="text-center mt-4">
+          <a href="{{ collection.url }}" class="btn btn--secondary">
+            {{ section.settings.view_all_text | default: 'Ver todo' }}
+          </a>
+        </div>
+      {%- endif -%}
+    {%- else -%}
+      <div class="collection-grid collection-grid--{{ section.settings.columns }}">
+        {%- for i in (1..section.settings.products_to_show) -%}
+          <div class="product-card">
+            <div class="product-card__image">
+              {{ 'product-' | append: i | placeholder_svg_tag: 'placeholder-svg' }}
+            </div>
+            <p class="product-card__title">Producto de ejemplo {{ i }}</p>
+            <p class="product-card__price">{{ 29900 | money }}</p>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Coleccion destacada",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitulo",
+      "default": "Seleccion curada"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titulo",
+      "default": "Destacados"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Coleccion"
+    },
+    {
+      "type": "range",
+      "id": "products_to_show",
+      "label": "Productos a mostrar",
+      "min": 2,
+      "max": 12,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Columnas",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "4"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Mostrar marca",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "show_view_all",
+      "label": "Mostrar boton 'Ver todo'",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "view_all_text",
+      "label": "Texto del boton 'Ver todo'",
+      "default": "Ver toda la coleccion"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Coleccion destacada"
+    }
+  ]
+}
+{% endschema %}

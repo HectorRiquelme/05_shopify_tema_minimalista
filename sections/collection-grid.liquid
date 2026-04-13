@@ -1,0 +1,97 @@
+<section class="collection-page" data-section-id="{{ section.id }}">
+  <div class="container">
+    <div class="collection-header">
+      <h1 class="collection-header__title">{{ collection.title }}</h1>
+      {%- if collection.description != blank -%}
+        <div class="collection-header__description">{{ collection.description }}</div>
+      {%- endif -%}
+      <p class="collection-header__count">{{ collection.products_count }} productos</p>
+    </div>
+
+    <div class="collection-toolbar">
+      <div class="collection-toolbar__count">
+        {{ collection.products_count }} productos
+      </div>
+      <div class="collection-toolbar__sort">
+        <label for="sort-by" class="visually-hidden">Ordenar por</label>
+        <select id="sort-by" onchange="window.location.href = this.value;">
+          {%- for option in collection.sort_options -%}
+            <option
+              value="{{ collection.url }}?sort_by={{ option.value }}"
+              {% if collection.sort_by == option.value %}selected{% endif %}
+            >
+              {{ option.name }}
+            </option>
+          {%- endfor -%}
+        </select>
+      </div>
+    </div>
+
+    {%- if collection.products.size > 0 -%}
+      <div class="collection-grid collection-grid--{{ section.settings.columns }}">
+        {%- paginate collection.products by section.settings.products_per_page -%}
+          {%- for product in collection.products -%}
+            {% render 'product-card', product: product, show_vendor: section.settings.show_vendor %}
+          {%- endfor -%}
+
+          {%- if paginate.pages > 1 -%}
+            <div class="pagination" style="grid-column: 1 / -1;">
+              {%- if paginate.previous -%}
+                <a href="{{ paginate.previous.url }}" aria-label="Pagina anterior">&laquo;</a>
+              {%- endif -%}
+
+              {%- for part in paginate.parts -%}
+                {%- if part.is_link -%}
+                  <a href="{{ part.url }}">{{ part.title }}</a>
+                {%- else -%}
+                  <span class="is-current">{{ part.title }}</span>
+                {%- endif -%}
+              {%- endfor -%}
+
+              {%- if paginate.next -%}
+                <a href="{{ paginate.next.url }}" aria-label="Pagina siguiente">&raquo;</a>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        {%- endpaginate -%}
+      </div>
+    {%- else -%}
+      <p class="text-center text-light">No hay productos en esta coleccion.</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Grilla de coleccion",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "select",
+      "id": "columns",
+      "label": "Columnas",
+      "options": [
+        { "value": "2", "label": "2" },
+        { "value": "3", "label": "3" },
+        { "value": "4", "label": "4" }
+      ],
+      "default": "3"
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "label": "Productos por pagina",
+      "min": 4,
+      "max": 24,
+      "step": 2,
+      "default": 12
+    },
+    {
+      "type": "checkbox",
+      "id": "show_vendor",
+      "label": "Mostrar marca",
+      "default": false
+    }
+  ]
+}
+{% endschema %}

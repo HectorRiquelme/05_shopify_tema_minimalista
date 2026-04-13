@@ -1,0 +1,25 @@
+{
+  "sections": {
+    "product-info": {
+      "type": "product-info",
+      "settings": {}
+    },
+    "product-metafields": {
+      "type": "product-metafields",
+      "settings": {
+        "heading": "Detalles del producto",
+        "label_material": "Material",
+        "label_origen": "Origen",
+        "label_cuidados": "Cuidados"
+      }
+    },
+    "product-reviews": {
+      "type": "product-reviews",
+      "settings": {
+        "heading": "Opiniones de clientes",
+        "empty_message": "Este producto aun no tiene opiniones. Se el primero en opinar."
+      }
+    }
+  },
+  "order": ["product-info", "product-metafields", "product-reviews"]
+}

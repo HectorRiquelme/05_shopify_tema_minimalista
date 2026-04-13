@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="{{ settings.color_primary }}">
+
+  <title>
+    {%- if page_title -%}
+      {{ page_title }} | {{ shop.name }}
+    {%- else -%}
+      {{ shop.name }}
+    {%- endif -%}
+  </title>
+
+  {%- if settings.favicon -%}
+    <link rel="icon" type="image/png" href="{{ settings.favicon | image_url: width: 32 }}">
+  {%- endif -%}
+
+  {{ 'base.css' | asset_url | stylesheet_tag }}
+
+  {%- if template.name == 'product' -%}
+    {{ 'product.css' | asset_url | stylesheet_tag }}
+  {%- endif -%}
+
+  {%- if template.name == 'collection' -%}
+    {{ 'collection.css' | asset_url | stylesheet_tag }}
+  {%- endif -%}
+
+  {% style %}
+    :root {
+      --color-primary: {{ settings.color_primary }};
+      --color-secondary: {{ settings.color_secondary }};
+      --color-accent: {{ settings.color_accent }};
+      --color-background: {{ settings.color_background }};
+      --color-text: {{ settings.color_text }};
+      --color-text-light: {{ settings.color_text_light }};
+      --color-button-bg: {{ settings.color_button_bg }};
+      --color-button-text: {{ settings.color_button_text }};
+      --color-button-hover: {{ settings.color_button_hover }};
+      --font-heading: {{ settings.font_heading.family }}, {{ settings.font_heading.fallback_families }};
+      --font-body: {{ settings.font_body.family }}, {{ settings.font_body.fallback_families }};
+      --font-size-base: {{ settings.font_size_base }}px;
+      --font-size-heading: {{ settings.font_size_heading }}px;
+      --logo-max-width: {{ settings.logo_max_width }}px;
+    }
+  {% endstyle %}
+
+  {{ settings.font_heading | font_face: font_display: 'swap' }}
+  {{ settings.font_body | font_face: font_display: 'swap' }}
+
+  {{ content_for_header }}
+
+  <script src="{{ 'theme.js' | asset_url }}" defer></script>
+</head>
+<body class="template-{{ template.name }}">
+  {%- if settings.announcement_show -%}
+    <div class="announcement-bar">
+      <p>{{ settings.announcement_text }}</p>
+    </div>
+  {%- endif -%}
+
+  {% sections 'header-group' %}
+
+  <main id="main-content" role="main">
+    {{ content_for_layout }}
+  </main>
+
+  {% sections 'footer-group' %}
+</body>
+</html>

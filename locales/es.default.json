@@ -1,0 +1,112 @@
+{
+  "general": {
+    "accessibility": {
+      "skip_to_content": "Saltar al contenido",
+      "close": "Cerrar"
+    },
+    "meta": {
+      "tags": "Etiquetado \"{{ tags }}\"",
+      "page": "Pagina {{ page }}"
+    },
+    "breadcrumbs": {
+      "home": "Inicio"
+    },
+    "search": {
+      "placeholder": "Buscar productos...",
+      "submit": "Buscar",
+      "no_results": "No se encontraron resultados para \"{{ terms }}\"."
+    },
+    "newsletter": {
+      "label": "Correo electronico",
+      "submit": "Suscribirse",
+      "success": "Gracias por suscribirte.",
+      "error": "Hubo un error. Intenta de nuevo."
+    }
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Agregar al carrito",
+      "sold_out": "Agotado",
+      "unavailable": "No disponible",
+      "quantity": "Cantidad",
+      "description": "Descripcion",
+      "on_sale": "En oferta",
+      "from_price": "Desde {{ price }}",
+      "vendor": "Marca",
+      "sku": "SKU",
+      "type": "Tipo"
+    },
+    "metafields": {
+      "material": "Material",
+      "origin": "Origen",
+      "care": "Cuidados",
+      "details": "Detalles del producto"
+    },
+    "reviews": {
+      "title": "Opiniones de clientes",
+      "empty": "Este producto aun no tiene opiniones.",
+      "count": {
+        "one": "{{ count }} opinion",
+        "other": "{{ count }} opiniones"
+      },
+      "author": "Autor",
+      "rating": "Valoracion",
+      "comment": "Comentario",
+      "date": "Fecha"
+    }
+  },
+  "collections": {
+    "general": {
+      "title": "Colecciones",
+      "no_matches": "No hay productos en esta coleccion.",
+      "items_count": "{{ count }} productos",
+      "sort_by": "Ordenar por"
+    }
+  },
+  "cart": {
+    "general": {
+      "title": "Carrito de compras",
+      "empty": "Tu carrito esta vacio.",
+      "continue_shopping": "Seguir comprando",
+      "subtotal": "Subtotal",
+      "checkout": "Pagar",
+      "remove": "Eliminar",
+      "update": "Actualizar"
+    }
+  },
+  "customer": {
+    "account": {
+      "title": "Mi cuenta",
+      "orders": "Pedidos",
+      "addresses": "Direcciones",
+      "logout": "Cerrar sesion"
+    },
+    "login": {
+      "title": "Iniciar sesion",
+      "email": "Correo electronico",
+      "password": "Contrasena",
+      "submit": "Entrar",
+      "forgot_password": "Olvidaste tu contrasena?",
+      "create_account": "Crear cuenta"
+    },
+    "register": {
+      "title": "Crear cuenta",
+      "first_name": "Nombre",
+      "last_name": "Apellido",
+      "email": "Correo electronico",
+      "password": "Contrasena",
+      "submit": "Crear"
+    }
+  },
+  "layout": {
+    "header": {
+      "cart": "Carrito",
+      "account": "Mi cuenta",
+      "search": "Buscar",
+      "menu": "Menu"
+    },
+    "footer": {
+      "copyright": "Todos los derechos reservados."
+    }
+  }
+}

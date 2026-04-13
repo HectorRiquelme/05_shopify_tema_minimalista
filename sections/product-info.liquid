@@ -1,0 +1,123 @@
+<section class="product-page" data-section-id="{{ section.id }}">
+  <div class="container">
+    <div class="product-layout">
+      <!-- Galeria -->
+      <div class="product-gallery">
+        {%- if product.featured_image -%}
+          <div class="product-gallery__main">
+            <img
+              src="{{ product.featured_image | image_url: width: 800 }}"
+              alt="{{ product.featured_image.alt | default: product.title }}"
+              loading="eager"
+              width="800"
+              height="{{ 800 | divided_by: product.featured_image.aspect_ratio | round }}"
+            >
+          </div>
+        {%- endif -%}
+
+        {%- if product.images.size > 1 -%}
+          <div class="product-gallery__thumbs">
+            {%- for image in product.images -%}
+              <button
+                class="product-gallery__thumb {% if forloop.first %}is-active{% endif %}"
+                data-full-src="{{ image | image_url: width: 800 }}"
+                aria-label="Ver imagen {{ forloop.index }}"
+              >
+                <img
+                  src="{{ image | image_url: width: 100 }}"
+                  alt="{{ image.alt | default: product.title }}"
+                  loading="lazy"
+                  width="80"
+                  height="80"
+                >
+              </button>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <!-- Informacion -->
+      <div class="product-info">
+        {%- if product.vendor != blank -%}
+          <p class="product-info__vendor">{{ product.vendor }}</p>
+        {%- endif -%}
+
+        <h1 class="product-info__title">{{ product.title }}</h1>
+
+        <div class="product-info__price">
+          {{ product.selected_or_first_available_variant.price | money }}
+          {%- if product.selected_or_first_available_variant.compare_at_price > product.selected_or_first_available_variant.price -%}
+            <span class="product-info__price--compare">
+              {{ product.selected_or_first_available_variant.compare_at_price | money }}
+            </span>
+          {%- endif -%}
+        </div>
+
+        <div class="product-info__description">
+          {{ product.description }}
+        </div>
+
+        {%- form 'product', product -%}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+
+          {%- unless product.has_only_default_variant -%}
+            <div class="product-options">
+              {%- for option in product.options_with_values -%}
+                <div class="product-option">
+                  <p class="product-option__label">{{ option.name }}</p>
+                  <div class="product-option__values">
+                    {%- for value in option.values -%}
+                      <button
+                        type="button"
+                        class="product-option__value {% if option.selected_value == value %}is-selected{% endif %}"
+                        data-option-index="{{ forloop.parentloop.index0 }}"
+                        data-value="{{ value }}"
+                      >
+                        {{ value }}
+                      </button>
+                    {%- endfor -%}
+                  </div>
+                </div>
+              {%- endfor -%}
+            </div>
+          {%- endunless -%}
+
+          <div class="product-quantity">
+            <button type="button" class="product-quantity__btn" data-action="decrease" aria-label="Disminuir cantidad">-</button>
+            <input
+              type="number"
+              name="quantity"
+              class="product-quantity__input"
+              value="1"
+              min="1"
+              aria-label="Cantidad"
+            >
+            <button type="button" class="product-quantity__btn" data-action="increase" aria-label="Aumentar cantidad">+</button>
+          </div>
+
+          <button
+            type="submit"
+            name="add"
+            class="btn btn--primary"
+            style="width: 100%;"
+            {% unless product.selected_or_first_available_variant.available %}disabled{% endunless %}
+          >
+            {%- if product.selected_or_first_available_variant.available -%}
+              Agregar al carrito
+            {%- else -%}
+              Agotado
+            {%- endif -%}
+          </button>
+        {%- endform -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Informacion del producto",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

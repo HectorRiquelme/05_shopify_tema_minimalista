@@ -1,0 +1,268 @@
+/* ============================================
+   Tema Minimalista - Estilos de Producto
+   Autor: Hector Riquelme
+   ============================================ */
+
+.product-page {
+  padding: 3rem 0;
+}
+
+.product-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .product-layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* --- Galeria --- */
+.product-gallery {
+  position: sticky;
+  top: 6rem;
+}
+
+.product-gallery__main {
+  margin-bottom: 1rem;
+  aspect-ratio: 1;
+  overflow: hidden;
+  background-color: var(--color-secondary);
+}
+
+.product-gallery__main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-gallery__thumbs {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.product-gallery__thumb {
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.product-gallery__thumb.is-active,
+.product-gallery__thumb:hover {
+  border-color: var(--color-primary);
+}
+
+.product-gallery__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- Info del producto --- */
+.product-info__vendor {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+  margin-bottom: 0.5rem;
+}
+
+.product-info__title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.product-info__price {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+}
+
+.product-info__price--compare {
+  text-decoration: line-through;
+  color: var(--color-text-light);
+  font-size: 1rem;
+  margin-left: 0.5rem;
+}
+
+.product-info__description {
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  color: var(--color-text-light);
+}
+
+/* --- Opciones de producto --- */
+.product-options {
+  margin-bottom: 2rem;
+}
+
+.product-option {
+  margin-bottom: 1.5rem;
+}
+
+.product-option__label {
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.6rem;
+  font-weight: 500;
+}
+
+.product-option__values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.product-option__value {
+  padding: 0.5rem 1.2rem;
+  border: 1px solid #ddd;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.product-option__value:hover,
+.product-option__value.is-selected {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+/* --- Cantidad --- */
+.product-quantity {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-bottom: 2rem;
+}
+
+.product-quantity__btn {
+  width: 44px;
+  height: 44px;
+  border: 1px solid #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  transition: background-color 0.3s;
+}
+
+.product-quantity__btn:hover {
+  background-color: var(--color-secondary);
+}
+
+.product-quantity__input {
+  width: 60px;
+  height: 44px;
+  border: 1px solid #ddd;
+  border-left: none;
+  border-right: none;
+  text-align: center;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+/* --- Metafields --- */
+.product-metafields {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.product-metafields__title {
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  font-family: var(--font-body);
+  font-weight: 600;
+}
+
+.product-metafields__list {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.product-metafield {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.9rem;
+}
+
+.product-metafield__label {
+  font-weight: 500;
+  min-width: 100px;
+  color: var(--color-text-light);
+}
+
+/* --- Reviews --- */
+.product-reviews {
+  padding: 4rem 0;
+  border-top: 1px solid #eee;
+}
+
+.product-reviews__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.product-reviews__count {
+  font-size: 0.85rem;
+  color: var(--color-text-light);
+}
+
+.review-card {
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.review-card:last-child {
+  border-bottom: none;
+}
+
+.review-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.review-card__author {
+  font-weight: 500;
+}
+
+.review-card__date {
+  font-size: 0.8rem;
+  color: var(--color-text-light);
+}
+
+.review-card__comment {
+  color: var(--color-text-light);
+  line-height: 1.7;
+  margin-top: 0.5rem;
+}
+
+/* --- Estrellas --- */
+.star-rating {
+  display: inline-flex;
+  gap: 2px;
+  color: var(--color-accent);
+}
+
+.star-rating__star {
+  font-size: 0.9rem;
+}
+
+.star-rating__star--empty {
+  color: #ddd;
+}

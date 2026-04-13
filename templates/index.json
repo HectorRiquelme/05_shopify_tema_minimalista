@@ -1,0 +1,81 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero-banner",
+      "settings": {
+        "subtitle": "Nueva coleccion",
+        "heading": "Esencia minimalista",
+        "description": "Piezas atemporales disenadas con materiales de la mas alta calidad.",
+        "button_text": "Explorar",
+        "button_link": "/collections/all",
+        "height": 85,
+        "overlay_color": "#1a1a1a",
+        "overlay_opacity": 40,
+        "text_color": "#ffffff"
+      }
+    },
+    "featured": {
+      "type": "featured-collection",
+      "settings": {
+        "subtitle": "Seleccion curada",
+        "heading": "Destacados",
+        "products_to_show": 4,
+        "columns": "4",
+        "show_vendor": false,
+        "show_view_all": true,
+        "view_all_text": "Ver toda la coleccion"
+      }
+    },
+    "testimonials": {
+      "type": "testimonials",
+      "settings": {
+        "subtitle": "Lo que dicen",
+        "heading": "Nuestros clientes",
+        "bg_color": "#f5f5f0"
+      },
+      "blocks": {
+        "testimonial_1": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Diseno impecable y materiales de primera calidad. Cada pieza es una obra de arte.",
+            "author": "Maria Garcia",
+            "location": "Santiago, Chile",
+            "rating": 5
+          }
+        },
+        "testimonial_2": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "Encontre exactamente lo que buscaba. El minimalismo en su maxima expresion.",
+            "author": "Carlos Lopez",
+            "location": "Buenos Aires, Argentina",
+            "rating": 5
+          }
+        },
+        "testimonial_3": {
+          "type": "testimonial",
+          "settings": {
+            "quote": "El envio fue rapido y el empaque tan cuidado como los productos. Volvere a comprar.",
+            "author": "Ana Martinez",
+            "location": "Ciudad de Mexico",
+            "rating": 5
+          }
+        }
+      },
+      "block_order": ["testimonial_1", "testimonial_2", "testimonial_3"]
+    },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "subtitle": "Mantente al dia",
+        "heading": "Suscribete",
+        "description": "Recibe novedades, lanzamientos exclusivos y un 10% de descuento en tu primera compra.",
+        "placeholder": "Tu correo electronico",
+        "button_text": "Suscribirse",
+        "success_message": "Gracias por suscribirte.",
+        "bg_color": "#ffffff"
+      }
+    }
+  },
+  "order": ["hero", "featured", "testimonials", "newsletter"]
+}

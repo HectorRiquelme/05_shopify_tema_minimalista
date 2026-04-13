@@ -1,0 +1,79 @@
+{%- comment -%}
+  Seccion de metafields del producto.
+  Requiere metafields definidos en el namespace "custom":
+    - custom.material (single_line_text_field)
+    - custom.origen (single_line_text_field)
+    - custom.cuidados (multi_line_text_field)
+{%- endcomment -%}
+
+{%- assign material = product.metafields.custom.material.value -%}
+{%- assign origen = product.metafields.custom.origen.value -%}
+{%- assign cuidados = product.metafields.custom.cuidados.value -%}
+
+{%- if material != blank or origen != blank or cuidados != blank -%}
+  <section class="product-metafields" data-section-id="{{ section.id }}">
+    <div class="container">
+      <h3 class="product-metafields__title">{{ section.settings.heading }}</h3>
+
+      <div class="product-metafields__list">
+        {%- if material != blank -%}
+          <div class="product-metafield">
+            <span class="product-metafield__label">{{ section.settings.label_material }}</span>
+            <span class="product-metafield__value">{{ material }}</span>
+          </div>
+        {%- endif -%}
+
+        {%- if origen != blank -%}
+          <div class="product-metafield">
+            <span class="product-metafield__label">{{ section.settings.label_origen }}</span>
+            <span class="product-metafield__value">{{ origen }}</span>
+          </div>
+        {%- endif -%}
+
+        {%- if cuidados != blank -%}
+          <div class="product-metafield">
+            <span class="product-metafield__label">{{ section.settings.label_cuidados }}</span>
+            <span class="product-metafield__value">{{ cuidados | newline_to_br }}</span>
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </section>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Metafields del producto",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Etiquetas"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Titulo de la seccion",
+      "default": "Detalles del producto"
+    },
+    {
+      "type": "text",
+      "id": "label_material",
+      "label": "Etiqueta: Material",
+      "default": "Material"
+    },
+    {
+      "type": "text",
+      "id": "label_origen",
+      "label": "Etiqueta: Origen",
+      "default": "Origen"
+    },
+    {
+      "type": "text",
+      "id": "label_cuidados",
+      "label": "Etiqueta: Cuidados",
+      "default": "Cuidados"
+    }
+  ]
+}
+{% endschema %}
